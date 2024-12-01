@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <link href="./styles/basicstyle.css" rel="stylesheet"/>
+    <link href="./styles/header.css" rel="stylesheet"/>
+    <link href="./styles/options.css" rel="stylesheet"/>
+    <link href="./styles/validate.css" rel="stylesheet"/>
+    <link href="./styles/format.css" rel="stylesheet"/>
+    <link href="./styles/table.css" rel="stylesheet"/>
+    <link href="./styles/download.css" rel="stylesheet"/>
+
+   <body>
+    <div id="app">
+        <div class="header">
+            <h2><span>{[]{}:,}</span> JSON Formatter</h2>
+            <div>
+                <div>tutorial</div> <!--add shortcuts info-->
+                <div>about</div> <!--why this was made-->
+                <div>theme</div> <!--theme: [dark, light]-->
+            </div>
+        </div>
+        <div class="main-section">
+            <div class="input-section">
+                <textarea class="input-area"></textarea>
+            </div>
+            <div class="option-section">
+                <div class="buttons convert-btn">
+                    <button class="validate-btn" value="validate">Validate</button>
+                    <button class="format-btn" value="format">Format</button>
+                    <button  disabled>Tab Space</button><!--dropdown with 2,4,6,8-->
+                    <select class="tab-space-btn"> <!--addeventlsitener 'change'-->
+                        <option value="2">2 space</option>
+                        <option value="4">4 space</option>
+                        <option value="8">8 space</option>
+                    </select>
+                    <button value="to-tree"> To Tree </button>
+                    <button value="to-table"> To Table </button>
+                    <button value="to-single-line"> To Single Line</button>
+                    <button value="download" disabled> Download As</button>
+                    <select class="download-btn">
+                        <option value="">
+                            ---
+                        </option>
+                        <option value="text">
+                            Single Line Text
+                        </option>
+                        <option value="json">
+                            JSON
+                        </option>
+                        <option value="excel">
+                            Excel
+                        </option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="output-section">
+               <div id="path-display" class="path">select a field</div>
+               <div class="output-area">
+                <div class="copy"></div>
+               </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    <script type="module" src="./js/app.js"></script>
+</html>
