@@ -2,17 +2,18 @@
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+    font-size: 14px;
 }
 .table-format, 
-.table-format  th, 
-.table-format  td {
+.table-format th, 
+.table-format td {
     border: 1px solid #ddd;
 }
-.table-format  th, .table-format  td {
+.table-format th, .table-format td {
     padding: 10px;
     text-align: left;
 }
-.table-format  th {
+.table-format th {
     background-color: #f4f4f4;
 }
 .copy-btn {

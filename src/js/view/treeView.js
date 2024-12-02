@@ -4,9 +4,10 @@ import * as utils from '../utils/copyClipBoard.js';
 class TreeView {
     constructor(display) {
        this.display = display;
+       this.space = 2;
     }
 
-    setDisplay(data) {
+    setDisplay(data, space) {
         clearElement(this.display);
         try {
             const parsedData = JSON.parse(data);
@@ -14,24 +15,29 @@ class TreeView {
             parentElement.classList.add("details");
             this.convertToTree(parsedData, parentElement);
             appendChild(this.display, parentElement)
+            this.space = space;
+            const classesToRemove = ['space-value-2', 'space-value-4', 'space-value-8'];
+            if (classesToRemove.some(cls => parentElement.classList.contains(cls))) {
+                classesToRemove.forEach(cls => parentElement.classList.remove(cls));
+            }
+            parentElement.classList.add(`space-value-${this.space}`)
             utils.copyToClipBoard(this.display, createElement("div")[0]);
         } catch(e) {
-            this.display.style.color = 'orange';
             this.display.innerHTML = this.handleError(e);
             console.warn(e)
         }
     }
     handleError(error) {
-        const errorInfo = `<br><br><br><span class='key error-info'>${error.message}</span>`;
+        const errorInfo = `<span class='tree-error'>${error.message}</span>`;
         return errorInfo;
     }
     handleTreeValue(key, value) {
         if(Array.isArray(value)) {
-            return [ key + `[${value.length}]`];
+            return [ key + `[${value.length}]`, false];
         }else if(typeof value === 'object' && value!==null) {
-            return [ key + `{${Object.keys(value).length}}`];
+            return [ key + `{${Object.keys(value).length}}`, false];
         } else {
-            return [null,`${key} : ${value}`];
+            return [null, true];
         }
     }
 
@@ -42,40 +48,31 @@ class TreeView {
             
             // Add class names for styling
             summaryText.classList.add("tree-key");
-            summaryText.classList.add("key");
             content.classList.add("tree-value");
-            if(Array.isArray(value)) {
-                content.classList.add("array");
-            } else if (typeof value === "string") {
-                content.classList.add("string");
-            } else if (typeof value === "number" && !Number.isNaN(value)) {
-                content.classList.add("number");
-            } else if (typeof value === "boolean") {
-                content.classList.add("boolean");
-            } else {
-                content.classList.add("null");
-            }
 
             summaryText.classList.add("tree-non-collapse")
+
     
             // Optionally open the <details> tag
             details.open = true;
-        
-            [summaryText.textContent, content.textContent] = this.handleTreeValue(key, value);
+            let isKeyValue = false;
+            [summaryText.textContent, isKeyValue] = this.handleTreeValue(key, value);
             appendChild(summary, summaryText)
             // If there's no content (empty object or array), we just append the summary
             const newKey = prefix ? `${prefix}.${key}` : key;
            // console.log(typeof key, typeof value, key, value)
             summaryText.setAttribute("data-path", newKey);
             content.setAttribute("data-path", newKey);
-            if (!content.textContent) {
+            
+            if (isKeyValue) {
+                // Add content (value) after the summary
+                content.innerHTML = `<span class='line-tree-key' data-path='${newKey}'>${key}</span> : <span class= 'line-tree-value' data-path='${newKey}'>${value}</span><div>`
+                addAsSibling(parentElement,content);  
+            } else {
                 // Append the details to the parent element
                 appendChild(parentElement, details);
                 appendChild(details, summary);
-            } else {
-                addAsSibling(parentElement,content)  // Add content (value) after the summary
             }
-    
             // If the value is an object (to create nested tree display), recurse
             if (typeof value === "object" && value !== null) {
                 this.convertToTree(value, details, newKey);  // Recursively convert objects

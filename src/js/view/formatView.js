@@ -5,7 +5,6 @@ class FormatView {
     constructor(display){
        this.display = display;
        this.copy = '';
-       this.space = 2;//default space
     }
 
     setDisplay(data, space) {

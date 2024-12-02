@@ -4,12 +4,9 @@ class Controller {
         this.model = model;
         this.view = view;
         this.view.bindConvert(this.convertData.bind(this));
-        this.view.bindCopy(this.copyClipBoard.bind(this));
         this.view.bindSpace(this.manageSpace.bind(this));
-        this.view.bindPath(this.manageTreePath.bind(this));
-        this.view.bindCopyTable(this.copyTableCell.bind(this))
         this.view.bindDownload(this.downloadData.bind(this));
-        //keep only 2, bindClick, bindChange
+        this.view.bindEvents(this.setPath.bind(this));
     }
     convertData(option) {
         const inputText = this.view.getInput();
@@ -17,10 +14,7 @@ class Controller {
         this.model.setOption(option);
         this.view.setDisplay(this.model.getJson(), this.model.getOption());
     }
-    copyClipBoard(copy) {
-        const copyText = this.view.getCopyText();
-        console.log("copy:",copy)
-    }
+
     manageSpace(space) {
         this.model.setSpace(space);
         const json = this.model.getJson();
@@ -28,17 +22,17 @@ class Controller {
         const spaces = this.model.getSpace();
         return {json, option, spaces};
     }
-    manageTreePath(path) {
-        this.model.setPath(path);
-        this.view.setRootPath(this.model.getPath());
-    }
-    copyTableCell(){
-
-    }
+   
+ 
     downloadData(option) {
         const data = this.model.getJson();
         const downloadAs = option;
         return {data, downloadAs};
+    }
+
+    setPath(path) {
+        this.model.setPath(path);
+        this.view.setRootPath(this.model.getPath());
     }
 }
 export {Controller};

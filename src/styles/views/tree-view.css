@@ -1,0 +1,138 @@
+/* Basic tree styles */
+details {
+    padding-left: 10px;
+    padding-top: 10px;
+    list-style-type: none; /* Removes default list item style */
+}
+
+/* Styling for the <summary> element (clickable header) */
+summary {
+    font-weight: bold;
+    cursor: pointer;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+summary:hover {
+    background-color: #ddd; /* Light background on hover */
+}
+
+/* Collapsibility indicator for all summary elements */
+summary::after {
+    content: " [+] "; /* Default state (collapsed) for all <details> */
+    font-size: 14px;
+    color: #777;
+}
+
+/* When the <details> element is open, change the indicator for all <details> */
+details[open] summary::after {
+    content: " [-] "; /* Open state for all <details> */
+}
+
+/* Styling for tree keys (the names of the properties, e.g., "grossary") */
+.tree-key {
+    color: #333;
+    font-size: 16px;
+}
+
+
+/* Style for the key part (title) */
+
+.tree-value {
+    cursor: default;
+}
+.tree-value .line-tree-key {
+    cursor: default;
+    color: red; /* Title will be red */
+  }
+  
+  /* Style for the value part (biscuit) */
+  .tree-value .line-tree-value {
+    cursor: default;
+    color: green; /* Biscuit will be green */
+  }
+  
+/* Optional: Style for specific types of values (numbers, booleans, etc.) */
+.tree-value.boolean {
+    color: #27ae60; /* Green for booleans */
+}
+
+.tree-value.number {
+    color: #8e44ad; /* Purple for numbers */
+}
+
+
+
+/* Ensure <summary> gets the correct expand/collapse indicator for nested details */
+details summary::after {
+    content: " [+] "; /* Default state (collapsed) for all <details> */
+}
+
+details[open] summary::after {
+    content: " [-] "; /* Open state for all <details> */
+}
+
+/* Ensure that when nested details are expanded or collapsed, their summary will toggle the [+] and [-] */
+details > details[open] summary::after {
+    content: " [-] "; /* Correctly toggle nested details */
+}
+
+details > details:not([open]) summary::after {
+    content: " [+] "; /* Correctly toggle nested details */
+}
+
+.details {
+    margin-top: 35px;
+}
+.highlight {
+    background-color: #ffffab;;
+    border: 1px solid #fe0;
+    border-radius: 2px;
+}
+.tree-error {
+    color: red;
+    display: inline-block;  /* Allows padding and margin to work */
+    padding: 10px;
+    margin-top: 45px;
+}
+.space-value-2 {
+    /* Ensure that all nested <details> elements have consistent indentation */
+    details > details {
+        margin-left: 20px; /* Additional indentation for nested details */
+    }
+
+    /* Styling for tree values (the values of each property) */
+    .tree-value {
+        margin-left: 50px; /* Indentation for values */
+        font-style: italic;
+        color: #555;
+    }
+}
+
+.space-value-4 {
+    /* Ensure that all nested <details> elements have consistent indentation */
+    details > details {
+        margin-left: 20px; /* Additional indentation for nested details */
+    }
+
+    /* Styling for tree values (the values of each property) */
+    .tree-value {
+        margin-left: 70px; /* Indentation for values */
+        font-style: italic;
+        color: #555;
+    }
+}
+.space-value-8 {
+    /* Ensure that all nested <details> elements have consistent indentation */
+    details > details {
+        margin-left: 20px; /* Additional indentation for nested details */
+    }
+
+    /* Styling for tree values (the values of each property) */
+    .tree-value {
+        margin-left: 100px; /* Indentation for values */
+        font-style: italic;
+        color: #555;
+    }
+}

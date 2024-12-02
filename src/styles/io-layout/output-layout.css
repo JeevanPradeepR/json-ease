@@ -46,7 +46,7 @@
     padding: 5px;
     position: absolute;
     z-index: 1;
-    width: 450px;
+    width: 550px;
     /* Prevent text from wrapping to a new line */
     white-space: nowrap; 
     /* Hide the overflowing text */  
