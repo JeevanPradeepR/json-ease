@@ -1,0 +1,81 @@
+/** 
+.output-section => parent element
+  |   => child elements
+  |__ .path || #path-display
+  |__ .output-area
+  |__ .copy
+**/
+
+/** Output display container **/
+.output-section {
+    padding: 10px;
+    flex: 40%;
+}
+
+/** Display's formatted json to desired format**/
+.output-area {
+    font-family: monospace;
+    /* Ensures that text will wrap, respecting spaces */
+    white-space: pre-wrap;
+    /* Allows breaking long words or strings */      
+    word-wrap: break-word;    
+    background-color: #f4f4f4;
+    padding: 20px;
+    font-size: 14px;
+    color: #333;
+    /* Ensures the width is 100% of the parent container */
+    max-width: 100%;   
+    /* Breaks long words if necessary */          
+    overflow-wrap: break-word;   
+    height:600px;
+    width: 600px;
+    resize: none;
+    font-size: 16px;
+    text-align: left;
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+    position: relative;
+}
+
+/** Display path of json root **/
+.path {
+    margin-top: 12px;
+    font-size: 16px;
+    background-color: #ebebeb;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    width: 450px;
+    /* Prevent text from wrapping to a new line */
+    white-space: nowrap; 
+    /* Hide the overflowing text */  
+    overflow: hidden;  
+    /* Add "..." at the end of the visible text */    
+    text-overflow: ellipsis; 
+     /* Set the text direction to right-to-left */
+    direction: rtl;
+    /* Ensure the text aligns to the left */       
+    text-align: left;      
+}
+/** For other formats except table, path won't be displayed **/
+.path-none {
+    display: none;
+}
+
+/** Copy element, displayed in the right corner of the output, to copy the text **/
+.copy {
+    cursor: pointer; 
+    position: absolute;
+    right: 5;
+    font-size: 30px;
+    color: black;
+    font-weight: 600;
+}
+/** on hover effects, it adds the text "copy" before the element when hover **/
+.copy:hover:before {
+   content: "copy";
+   font-size: 14px;
+   font-weight: 100;
+   color: #6495ED;
+}

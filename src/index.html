@@ -1,16 +1,10 @@
 <html>
     <head>
         <title>
-
+            Json To Ease
         </title>
     </head>
-    <link href="./styles/basicstyle.css" rel="stylesheet"/>
-    <link href="./styles/header.css" rel="stylesheet"/>
-    <link href="./styles/options.css" rel="stylesheet"/>
-    <link href="./styles/validate.css" rel="stylesheet"/>
-    <link href="./styles/format.css" rel="stylesheet"/>
-    <link href="./styles/table.css" rel="stylesheet"/>
-    <link href="./styles/download.css" rel="stylesheet"/>
+    <link href="./styles/main.css" rel="stylesheet"/>
 
    <body>
     <div id="app">
@@ -30,7 +24,7 @@
                 <div class="buttons convert-btn">
                     <button class="validate-btn" value="validate">Validate</button>
                     <button class="format-btn" value="format">Format</button>
-                    <button  disabled>Tab Space</button><!--dropdown with 2,4,6,8-->
+                    <button  disabled class="disabled-btn">Tab Space</button><!--dropdown with 2,4,6,8-->
                     <select class="tab-space-btn"> <!--addeventlsitener 'change'-->
                         <option value="2">2 space</option>
                         <option value="4">4 space</option>
@@ -39,10 +33,10 @@
                     <button value="to-tree"> To Tree </button>
                     <button value="to-table"> To Table </button>
                     <button value="to-single-line"> To Single Line</button>
-                    <button value="download" disabled> Download As</button>
+                    
                     <select class="download-btn">
                         <option value="">
-                            ---
+                            Download As
                         </option>
                         <option value="text">
                             Single Line Text
@@ -60,11 +54,11 @@
             <div class="output-section">
                <div id="path-display" class="path">select a field</div>
                <div class="output-area">
-                <div class="copy"></div>
-               </div>
+               <div class="copy"></div>
             </div>
         </div>
     </div>
-    </body>
+</div>
+</body>
     <script type="module" src="./js/app.js"></script>
 </html>

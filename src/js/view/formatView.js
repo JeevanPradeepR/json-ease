@@ -30,7 +30,7 @@ class FormatView {
     }
 
     handleError(error) {
-        const errorInfo = `<span class='key error-info'>${error.message}</span>`;
+        const errorInfo = `<span class='error-info'>${error.message}</span>`;
         this.setCopyData(error.message);
         return errorInfo;
     }

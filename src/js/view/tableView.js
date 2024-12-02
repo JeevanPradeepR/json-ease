@@ -9,7 +9,7 @@ class TableView {
 
     initTable() {
        return `
-       <table>
+       <table class='table-format'>
             <thead>
                 <tr>
                     <th>Field</th>

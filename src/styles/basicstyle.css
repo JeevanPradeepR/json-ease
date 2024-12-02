@@ -1,10 +1,4 @@
-textarea, .output-area {
-    height:600px;
-    width: 500px;
-    resize: none;
-    background-color: white;
-    position: relative;
-}
+
 :root {
     --base-margin: 2%;
 }
@@ -25,29 +19,7 @@ details>div{
 summary::marker {
     color: blue;
 }
-.main-section {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 30px;
-    text-align: center;
-    flex-direction: row;
-    max-width: 100%;
-    margin:0  auto;
-    background-color: #6495ED;
 
-    }
-
-    .input-section, .output-section {
-    padding: 10px;
-    flex: 40%;
-
-    }
-
-    .option-section {
-    padding: 10px;
-    flex: 10%;
-    
-    }
 
     /* Responsive layout - makes a one column-layout instead of a two-column layout */
     @media (max-width: 800px) {
@@ -96,20 +68,4 @@ summary::marker {
             margin: 0 auto;
         }
   
-    }
-    .copy {
-         cursor: pointer; 
-         position: absolute;
-         right: 5;
-         font-size: 30px;
-         color: black;
-         font-weight: 600;
-    }
-  
-      
-    .copy:hover:before {
-        content: "copy";
-        font-size: 14px;
-        font-weight: 100;
-        color: #6495ED;
     }

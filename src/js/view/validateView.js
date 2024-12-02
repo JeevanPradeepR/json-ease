@@ -1,4 +1,4 @@
-import {clearElement, createElement, addAsSibling} from '../utils/helper/domHandlers.js';
+import {clearElement, createElement} from '../utils/helper/domHandlers.js';
 import * as utils from '../utils/copyClipBoard.js';
 class ValidateView {
     constructor(display){
@@ -18,29 +18,28 @@ class ValidateView {
         const message = this.display;
         try {
             JSON.parse(json);
-            message.style.color = "green";
-            message.innerHTML = `
+            message.innerHTML = `<div class='validate-info'>
                 <p>✅ <strong>Valid JSON</strong></p>
-                <p>Click on the format button to beautify your JSON.</p>
-            `;
+                <p>Click on the Format button to beautify your JSON.</p>
+            </div>`;
         } catch (e) {
-            message.style.color = "red";
             const errorPosition = e.message.match(/at position (\d+)/);
             const position = errorPosition ? parseInt(errorPosition[1], 10) : null;
             if (position !== null) {
                 const lines = json.slice(0, position).split('\n');
                 const lineNumber = lines.length;
                 const columnNumber = lines[lines.length - 1].length + 1;
-                message.innerHTML = `
+                message.innerHTML = `<div class='validate-error'>
                     <p>❌ <strong>Invalid JSON</strong></p>
                     <p>Reason: <code>${e.message}</code></p>
                     <p>Line: ${lineNumber}, Column: ${columnNumber}</p>
-                `;
+                </div>`;
             } else {
                 message.innerHTML = `
+                <div class='validate-error'>
                     <p>❌ <strong>Invalid JSON</strong></p>
                     <p>Reason: <code>${e.message}</code></p>
-                `;
+                </div>`;
             }
         }
         utils.copyToClipBoard(this.display, createElement("div")[0]);

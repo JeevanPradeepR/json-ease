@@ -18,25 +18,3 @@
 .json-array { color: #800080; }
 .json-null { color: #9b9b9b; }
 
-
-.output-area {
-    font-family: monospace;
-    white-space: pre-wrap;       /* Ensures that text will wrap, respecting spaces */
-    word-wrap: break-word;      /* Allows breaking long words or strings */
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #333;
-    max-width: 100%;             /* Ensures the width is 100% of the parent container */
-    overflow-wrap: break-word;   /* Breaks long words if necessary */
-    /* word-break: break-all;  */
-    height:600px;
-    width: 500px;
-    resize: none;
-    font-size: 16px;
-    text-align: left;
-    background-color: white;
-    padding: 10px;
-    overflow-y: auto;
-}

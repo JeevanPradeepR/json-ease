@@ -1,0 +1,14 @@
+.singleline-info {
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+}
+
+.singleline-error {
+    color: red;
+}
+
+.singleline-info,
+.singleline-error {
+    position: absolute;
+    padding: 10px;
+}

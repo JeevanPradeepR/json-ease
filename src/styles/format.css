@@ -1,33 +1,5 @@
-.key { color: #d14; }
-.string { color: #008000; }
-.number { color: #1e90ff; }
-.boolean { color: #ff6347; }
-.array { color: #800080; }
-.null,.braces { color: #9b9b9b; }
-.error-info {
-    color: red;
-}
-.path {
-    margin-top: 12px;
-    font-size: 16px;
-    background-color: #ebebeb;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    width: 450px;
 
-    white-space: nowrap;   /* Prevent text from wrapping to a new line */
-    overflow: hidden;      /* Hide the overflowing text */
-    text-overflow: ellipsis; /* Add "..." at the end of the visible text */
-    direction: rtl;        /* Set the text direction to right-to-left */
-    text-align: left;      /* Ensure the text aligns to the left */
-}
-.path-none {
-    display: none;
-}
-.output-area {
-    position: relative;
-}
+
 .details {
     margin-top: 35px;
 }
