@@ -19,25 +19,37 @@
 
 /** option display container **/
 .option-section {
-    padding: 10px;
-    flex: 10%;
-}
+    flex: 1;
+    margin: 20px;
+    padding: 20px;
+    /* background-color: #f7f7f7; */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* border: 10px #f7f7f7 solid; */
+  }
 
-/** setting up the basic styles for buttons & dropdowns(select tag) **/
-.option-section > .buttons > button, 
-.option-section > .buttons > select {
-    width: 100%;
-    padding: 10px;
-    font-size: 20px;
-    margin-top: 20px;
+  /** setting up the basic styles for buttons & dropdowns(select tag) **/
+  .option-section > .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .option-section > .buttons > button, 
+  .option-section > .buttons > select {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    max-width: 100%;
     color: white;
     background-color: transparent;
     border-color: white;
     cursor: pointer;
     text-align: center;
-}
+    flex-grow: 1;
+  }
 
-/** disabling the outline(black border) for dropdown **/
+  /** disabling the outline(black border) for dropdown **/
 .option-section >.buttons>select{
     outline: none;
 }
@@ -61,3 +73,40 @@
     background-color: white;
     font-weight: 600;
 }
+
+
+ /* Responsive Styles */
+  
+ @media (max-width: 1200px) {    
+    .option-section {
+      flex: 1;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    
+    .option-section {
+      flex: 1;
+      margin: 20px 0;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .option-section > .buttons {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .output-section {
+      flex: 1;
+      margin:  0;
+    }
+    
+    .option-section > .buttons > button, 
+    .option-section > .buttons > select {
+      margin: 10px 0;
+      font-size: 10px;
+      text-align: center;
+    }
+
+  }

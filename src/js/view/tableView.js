@@ -52,7 +52,7 @@ class TableView {
             const [tr, td_1, td_2, td_3] = createElement("tr","td","td","td");
             td_1.textContent = newKey;
             td_2.textContent = typeof value!=='object'?value: `{size: ${Object.keys(value).length}}`;
-            td_3.append(this.setCopyBtn(createElement("button")[0], "copy-btn", "copy", newKey, value));
+            td_3.append(this.setCopyBtn(createElement("button")[0], "copy-btn", "⎘", newKey, value));
             tr.append(td_1,td_2,td_3);
             appendChild(this.table, tr);
             if(typeof value === 'object' && value !==null) {

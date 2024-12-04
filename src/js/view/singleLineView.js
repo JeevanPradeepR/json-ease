@@ -1,5 +1,5 @@
 import * as utils from '../utils/copyClipBoard.js';
-import {createElement, appendChild, addAsSibling, clearElement } from '../utils/helper/domHandlers.js';
+import {createElement } from '../utils/helper/domHandlers.js';
 
 class SingleLineView {
     constructor(display){

@@ -1,7 +1,7 @@
 .table-format {
+    margin-top: -50px;
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
     font-size: 14px;
 }
 .table-format, 
@@ -16,14 +16,52 @@
 .table-format th {
     background-color: #f4f4f4;
 }
+th:first-child, td:first-child {
+    width: 21vw; /* Set the width for the first column */
+}
+th:nth-child(3), td:nth-child(3) {
+    width: 7vw; /* Set the width for the first column */
+}
+ /* Responsive Styles */
+ @media (max-width: 1200px) {
+    th:first-child, td:first-child {
+        width: 15vw;
+    }
+    th:nth-child(3), td:nth-child(3) {
+        width: 7vw;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    th:first-child, td:first-child {
+        width: 45vw;
+    }
+    th:nth-child(3), td:nth-child(3) {
+        width: 7vw;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    th:first-child, td:first-child {
+        width: 35vw;
+    }
+    th:nth-child(3), td:nth-child(3) {
+        width: 7vw;
+    }
+  }
 .copy-btn {
-    background-color: #4CAF50;
-    color: white;
+    background-color: transparent;
+    color: rgb(100, 149, 237);
     border: none;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 20px;
 }
-.copy-btn:hover {
-    background-color: #45a049;
+.copy-btn:hover:after {
+    color: #45a049;
+    content: "copy";
+   font-size: 10px;
+   font-weight: 100;
+   color: #6495ED;
 }

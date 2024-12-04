@@ -7,8 +7,7 @@
     font-weight: 100;
     color: #6495ED;
     background-color: whitesmoke;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     cursor: default;
 }
 .header>div {

@@ -66,7 +66,7 @@ class FormatView {
 
         const jsonHighlighted = this.syntaxHighlight(jsonStringified);
     
-        return `<pre>${jsonHighlighted}</pre>`;
+        return `<pre class="format-json">${jsonHighlighted}</pre>`;
     }
     
     syntaxHighlight(json) {   

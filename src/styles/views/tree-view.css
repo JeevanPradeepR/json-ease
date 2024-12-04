@@ -1,7 +1,7 @@
 /* Basic tree styles */
 details {
     padding-left: 10px;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     list-style-type: none; /* Removes default list item style */
 }
 
@@ -83,7 +83,7 @@ details > details:not([open]) summary::after {
 }
 
 .details {
-    margin-top: 35px;
+    /* margin-top: 35px; */
 }
 .highlight {
     background-color: #ffffab;;
@@ -94,7 +94,7 @@ details > details:not([open]) summary::after {
     color: red;
     display: inline-block;  /* Allows padding and margin to work */
     padding: 10px;
-    margin-top: 45px;
+    /* margin-top: 45px; */
 }
 .space-value-2 {
     /* Ensure that all nested <details> elements have consistent indentation */

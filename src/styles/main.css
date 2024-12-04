@@ -1,16 +1,3 @@
-/* @import './basicstyle.css';
-@import './download.css';
-@import './format.css';
-@import './header.css';
-@import './options.css';
-@import './table.css';
-@import './validate.css'; */
-
-@import './io-layout/output-layout.css';
-@import './io-layout/input-layout.css';
-@import './io-layout/options-layout.css';
-
-@import './header/header.css';
 @import './body/main-layout.css';
 
 @import './views/validate-view.css';
@@ -18,3 +5,22 @@
 @import './views/table-view.css';
 @import './views/singleline-view.css';
 @import './views/tree-view.css';
+
+@import './header/header.css';
+@import './io-layout/input-layout.css';
+@import './io-layout/options-layout.css';
+@import './io-layout/output-layout.css';
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f0f0;
+  }
