@@ -1,0 +1,48 @@
+{
+  "name": "json-ease",
+  "version": "1.0.0",
+  "description": "json fromatter use to modify json to several formats.",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "start": "npx live-server",
+    "test": "nyc --reporter=html --reporter=text mocha --exit"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "node_modules",
+      "test/**/*.js",
+      "test/*.js"
+    ],
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "all": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeevanPradeepR/json-ease.git"
+  },
+  "keywords": [
+    "json",
+    "format",
+    "tree",
+    "validate",
+    "table"
+  ],
+  "author": "Jeevan Pradeep",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeevanPradeepR/json-ease/issues"
+  },
+  "homepage": "https://github.com/JeevanPradeepR/json-ease#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "mocha": "^11.0.1",
+    "nyc": "^17.1.0"
+  }
+}

@@ -1,4 +1,3 @@
-import {createElement, appendChild, addAsSibling, clearElement } from '../utils/helper/domHandlers.js';
 
 class DownloadView {
     constructor(display, input){

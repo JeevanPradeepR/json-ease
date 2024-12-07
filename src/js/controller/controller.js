@@ -8,6 +8,7 @@ class Controller {
         this.view.bindDownload(this.downloadData.bind(this));
         this.view.bindEvents(this.setPath.bind(this));
     }
+
     convertData(option) {
         const inputText = this.view.getInput();
         this.model.setJson(inputText);

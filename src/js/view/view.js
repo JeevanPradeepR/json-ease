@@ -8,13 +8,19 @@ import DownloadView from "./downloadView.js";
 class View {
     constructor() {
         this.inputArea = document.querySelector('.input-area');
-        this.inputArea.value = `{"grossary":{
+        this.inputArea.value = `[{"grossary":{
             "title": "biscuit",
             "quantity": 1,
             "type": {"product":"britinnia", "price":20},
             "offer": ["scale", "sticker"],
             "discount": false
-        }}`;
+        }}, {"grossary":{
+            "title": "biscuit",
+            "quantity": 1,
+            "type": {"product":"britinnia", "price":20},
+            "offer": ["scale", "sticker"],
+            "discount": false
+        }}]`;
         this.convertBtn = document.querySelector('.convert-btn');
         this.outputArea = document.querySelector('.output-area');
         this.copyBtn = document.querySelector(".copy");
@@ -105,7 +111,9 @@ class View {
     bindEvents(handler) {
         this.outputArea.addEventListener('click', (event) => {
             const target = event.target;
-            
+            if(target.classList.contains('search-btn') || target.classList.contains('search-input')) {
+                  return;
+            }
             const highlight = target.querySelector(".highlight");
             if (highlight) {
                 highlight.classList.remove('highlight');
