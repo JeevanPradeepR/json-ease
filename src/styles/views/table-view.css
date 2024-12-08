@@ -1,5 +1,5 @@
 .table-format {
-    margin-top: -50px;
+    margin-top: -30px;
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
@@ -65,3 +65,51 @@ th:nth-child(3), td:nth-child(3) {
    font-weight: 100;
    color: #6495ED;
 }
+
+.limit-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .limit-container button {
+    padding: 5px 10px;
+    font-size: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #03A9F4;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .limit-container button:hover {
+    background-color: #039BE5;
+  }
+  
+  .limit-container button[disabled] {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }
+  
+  .limit-container .key {
+    font-size: 16px;
+    color: #666;
+    margin-right: 10px;
+  }
+  .key {
+    color: tomato;
+  }
+  
+  .limit-container button:last-child {
+    background-color: #03A9F4;
+  }
+  
+  .limit-container button:last-child:hover {
+    background-color: #039BE5;
+  }

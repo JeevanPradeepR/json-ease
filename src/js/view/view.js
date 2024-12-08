@@ -102,7 +102,6 @@ class View {
         })
     }
     addHighlight(event, cls, prev) {
-            console.log(prev)
             if (prev) {
               prev.classList.remove(cls);
             }
@@ -111,67 +110,79 @@ class View {
     bindEvents(handler) {
         this.outputArea.addEventListener('click', (event) => {
             const target = event.target;
-            if(target.classList.contains('search-btn') || target.classList.contains('search-input')) {
-                  return;
-            }
-            const highlight = target.querySelector(".highlight");
-            if (highlight) {
-                highlight.classList.remove('highlight');
-            }
-            // Handle the case when the target is a span with 'tree-non-collapse' class
-            if (target.tagName === 'SPAN' && target.classList.contains('tree-non-collapse')) {
-                event.preventDefault();
+            
+            // If the target is a search button or input, do nothing
+            if (target.classList.contains('search-btn') || target.classList.contains('search-input')) {
+                return;
             }
     
-            // Handle clicks on elements that are part of the tree (tree-key, tree-value, etc.)
-            if (
-                target.classList.contains('tree-key') ||
-                target.classList.contains('tree-value') ||
-                target.classList.contains('tree-non-collapse') ||
-                target.classList.contains('line-tree-key') ||
-                target.classList.contains('line-tree-value')
-            ) {
-                const path = target.getAttribute('data-path');
-                this.setCopyText(path);  // Set the copy text
-                handler(path);           // Call the handler with the path
-                
-                // Add or remove the highlight class
-                const preHighlightedField = this.outputArea.querySelector(".highlight");
-                this.addHighlight(event, 'highlight', preHighlightedField);
-            } else {
-                if(target.classList.contains('highlight')) {
-                    target.classList.remove('highlight');
-                }
-            }
+            // Handle highlighting logic
+            this.toggleHighlight(target);
     
-            // Handle clicks on buttons with 'copy-btn' class (for copying values)
-            if (target.tagName === 'BUTTON' && target.classList.contains('copy-btn')) {
-                const keyValue = target.getAttribute('key-value');
-                this.setCopyText(keyValue);  // Set the copy text from the button
-            }
-
-            // Check if the target is either a "copy" or "copy-btn" element
-            if (target.classList.contains("copy") || target.classList.contains("copy-btn")) {
-                console.log('bind copy');  // Logging the action (could be removed in production)
-
-                // Get the text content to be copied
-                const jsonContent = this.getCopyText(); 
-
-                // Attempt to copy the text to the clipboard
-                navigator.clipboard.writeText(jsonContent)
-                    .then(() => {
-                        alert('JSON copied to clipboard!');  // Inform the user about success
-                        // Optionally, you could call the handler here if necessary
-                        // handler('JSON copied');
-                    })
-                    .catch(err => {
-                        console.error('Could not copy text: ', err);  // Log the error
-                        // Optionally, you could call the handler here for error feedback
-                        // handler('JSON error', err);
-                    });
-            }
+            // Handle specific actions based on element type
+            this.handleElementClick(target, handler);
+            
+            // Handle copying logic (buttons with copy-btn class)
+            this.handleCopyAction(target);
         });
     }
     
-} 
+    toggleHighlight(target) {
+        const highlight = target.querySelector(".highlight");
+        if (highlight) {
+            highlight.classList.remove('highlight');
+        }
+    
+        // If it's a span with the 'tree-non-collapse' class, prevent default action
+        if (target.tagName === 'SPAN' && target.classList.contains('tree-non-collapse')) {
+            event.preventDefault();
+        }
+    }
+    
+    handleElementClick(target, handler) {
+        // If it's a tree element (key/value)
+        if (
+            target.classList.contains('tree-key') ||
+            target.classList.contains('tree-value') ||
+            target.classList.contains('tree-non-collapse') ||
+            target.classList.contains('line-tree-key') ||
+            target.classList.contains('line-tree-value')
+        ) {
+            const path = target.getAttribute('data-path');
+            this.setCopyText(path);  // Set the copy text
+            handler(path);           // Call the handler with the path
+            
+            // Add highlight after setting copy text
+            const preHighlightedField = this.outputArea.querySelector(".highlight");
+            this.addHighlight(event, 'highlight', preHighlightedField);
+        } else if (target.classList.contains('highlight')) {
+            target.classList.remove('highlight');
+        }
+    }
+    
+    handleCopyAction(target) {
+        // If it's a button with the 'copy-btn' class
+        if (target.tagName === 'BUTTON' && target.classList.contains('copy-btn')) {
+            const keyValue = target.getAttribute('key-value');
+            this.setCopyText(keyValue);  // Set the copy text from the button
+        }
+    
+        // If it's a copy action (either 'copy' or 'copy-btn' class)
+        if (target.classList.contains("copy") || target.classList.contains("copy-btn")) {
+            console.log('bind copy');  // Logging the action (could be removed in production)
+    
+            // Get the text content to be copied
+            const jsonContent = this.getCopyText(); 
+    
+            // Attempt to copy the text to the clipboard
+            navigator.clipboard.writeText(jsonContent)
+                .then(() => {
+                    alert('JSON copied to clipboard!');  // Inform the user about success
+                })
+                .catch(err => {
+                    console.error('Could not copy text: ', err);  // Log the error
+                });
+        }
+    }
+}    
 export {View}

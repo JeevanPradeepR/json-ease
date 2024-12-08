@@ -27,6 +27,8 @@ class FormatView {
     }
 
     initializeSearchEvent() {
+        this.searchContainer.innerHTML = '';
+        this.input.value = '';
         this.searchContainer.classList.add('search-container');
         this.searchBtn.classList.add('search-btn');
         this.input.classList.add('search-input');
@@ -117,6 +119,7 @@ class FormatView {
         // Ensure the search value is valid
         if (!value.length) {
             console.log("Please provide a valid search value.");
+            this.count.textContent = '0 matches';
             return;
         }
         // Remove previously highlighted searches
@@ -135,8 +138,7 @@ class FormatView {
             matchCount++; 
             return `${p1}<span class='highlighted' style='background-color: yellow'>${p2}</span>${p3}`;
           });
-      
-     
+                  
         if(matchCount) {
             this.searchContainer.append(this.prev, this.next, this.count);
             this.prev.classList.add('prev');
@@ -145,6 +147,7 @@ class FormatView {
             this.next.classList.remove('next-hide');
             this.count.classList.add('count');
         } else {
+            this.searchContainer.append(this.count);
             this.prev.classList.add('prev-hide');
             this.next.classList.add('next-hide');
         }
