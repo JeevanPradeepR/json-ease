@@ -1,10 +1,12 @@
 import {createElement, appendChild, addAsSibling, clearElement } from '../utils/helper/domHandlers.js';
 import * as utils from '../utils/copyClipBoard.js';
+import SearchWidget from '../widget/search_widget/search.js';
 
 class TreeView {
     constructor(display) {
        this.display = display;
        this.space = 2;
+       this.searchView = SearchWidget;
     }
 
     setDisplay(data, space) {
@@ -13,6 +15,7 @@ class TreeView {
             const parsedData = JSON.parse(data);
             const parentElement = createElement("div")[0];
             parentElement.classList.add("details");
+            parentElement.classList.add("search-widget-container");
             this.convertToTree(parsedData, parentElement);
             appendChild(this.display, parentElement)
             this.space = space;
@@ -21,6 +24,7 @@ class TreeView {
                 classesToRemove.forEach(cls => parentElement.classList.remove(cls));
             }
             parentElement.classList.add(`space-value-${this.space}`)
+            this.searchView.view.attachElement({parentElement: this.display});
             utils.copyToClipBoard(this.display, createElement("div")[0]);
         } catch(e) {
             this.display.innerHTML = this.handleError(e);

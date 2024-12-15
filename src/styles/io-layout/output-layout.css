@@ -94,7 +94,7 @@
     /* Add "..." at the end of the visible text */    
     text-overflow: ellipsis; 
      /* Set the text direction to right-to-left */
-    direction: rtl;
+    direction: ltr;
     /* Ensure the text aligns to the left */       
     text-align: left;      
 }

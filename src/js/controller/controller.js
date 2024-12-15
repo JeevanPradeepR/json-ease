@@ -1,39 +1,47 @@
 //get data from model and set to view & vice versa
-class Controller {
+import BindController from "./bindController.js";
+class Controller extends BindController {
     constructor(model, view) {
+        super();
         this.model = model;
         this.view = view;
-        this.view.bindConvert(this.convertData.bind(this));
+        this.view.bindTransform(this.transformJson.bind(this));
         this.view.bindSpace(this.manageSpace.bind(this));
         this.view.bindDownload(this.downloadData.bind(this));
-        this.view.bindEvents(this.setPath.bind(this));
+
+        this.view.bindEvents(this.setEvents.bind(this));
     }
 
-    convertData(option) {
+    transformJson({target}) {
         const inputText = this.view.getInput();
         this.model.setJson(inputText);
-        this.model.setOption(option);
+        if(target.tagName === 'BUTTON') {
+            this.model.setOption(target.value);
+            this.view.setDisplay(this.model.getJson(), this.model.getOption());
+        }
+    }
+
+    manageSpace({target}) {
+        this.model.setSpace(target.value * 1);
+        const space = this.model.getSpace();
+        this.view.setSpace(space);
         this.view.setDisplay(this.model.getJson(), this.model.getOption());
     }
-
-    manageSpace(space) {
-        this.model.setSpace(space);
-        const json = this.model.getJson();
-        const option = this.model.getOption();
-        const spaces = this.model.getSpace();
-        return {json, option, spaces};
-    }
    
- 
-    downloadData(option) {
+    downloadData({target}) {
         const data = this.model.getJson();
-        const downloadAs = option;
-        return {data, downloadAs};
+        const downloadAs = target.value;
+        this.view.downloadView.downloadData(data, downloadAs);
     }
 
-    setPath(path) {
-        this.model.setPath(path);
-        this.view.setRootPath(this.model.getPath());
+    setEvents(event) {
+        const { target } = event;
+        this.handleHighlight();
+        this.handleTreeEvents(target);
+        this.handleCopyAction(target);
+        this.handleButtonActions(event, target);
+        this.handleSearch(event, target);
     }
+    
 }
 export {Controller};

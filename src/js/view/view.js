@@ -47,59 +47,48 @@ class View {
     getCopyText() {
         return this.copyText;
     }
+    getHighlightedElement() {
+        return this.outputArea.querySelector(".highlight");
+    }
     setDisplay(data, option) {
-        console.log(option)
         this.path.classList.add('path-none');
-        if(option==='validate') {
+        if(option === 'validate') {
             this.validateView.setDisplay(data);
             this.setCopyText(this.validateView.getCopyData());
         }
-        if(option==='format'){
-            this.formatView.setDisplay(data, this.space);
+        if(option === 'format'){
+            this.formatView.setDisplay(data, this.getSpace());
             this.setCopyText(this.formatView.getCopyData());
         }
-        if(option==='to-single-line') {
+        if(option === 'to-single-line') {
             this.singleLineView.setDisplay(data);
             this.setCopyText(this.singleLineView.getCopyData());
         }
-        if(option==='to-tree') {
+        if(option === 'to-tree') {
             this.path.classList.remove('path-none');
-            this.treeView.setDisplay(data, this.space);
+            this.treeView.setDisplay(data, this.getSpace());
         }
-        if(option==='to-table') {
+        if(option === 'to-table') {
             this.tableView.setDisplay(data);
         }
     }
-
+    getSpace() {
+        return this.space;
+    }
+    setSpace(space) {
+        this.space = space;
+    }
     setRootPath(path) {
         this.path.textContent = path;
     }
-    bindConvert(handler) {
-        this.convertBtn.addEventListener('click', function(event) {
-            if(event.target && event.target.tagName === 'BUTTON') {
-                //event.target.value = validate, format, to-tree, to-table, to-single-line, download
-                    handler(event.target.value)
-            }
-        });
+    bindTransform(handler) {
+        this.convertBtn.addEventListener('click', handler);
     }
     bindSpace(handler) {
-        this.tabSpaceBtn.addEventListener('change',(event)=>{
-           const {json, option, spaces} = handler(event.target.value);
-           if(json) {
-                this.space = spaces*1;
-                this.setDisplay(json,option);
-           } else {
-                this.space = spaces*1;
-           }
-        })
+        this.tabSpaceBtn.addEventListener('change', handler);
     }
     bindDownload(handler) {
-        this.downloadBtn.addEventListener('change', (event)=> {
-            const {data, downloadAs} = handler(event.target.value);
-            this.downloadView.downloadData(data, downloadAs);
-            event.target.selectedIndex = 0; 
-            event.preventDefault();
-        })
+        this.downloadBtn.addEventListener('change', handler);
     }
     addHighlight(event, cls, prev) {
             if (prev) {
@@ -107,82 +96,14 @@ class View {
             }
             event.target.classList.add(cls);
     }
+    removeHighlight() {
+        this.outputArea.querySelector(".highlight").classList.remove('highlight');  
+    }
+    hasHighlightedElement() {
+       return this.outputArea.querySelector(".highlight") ? true : false;
+    }
     bindEvents(handler) {
-        this.outputArea.addEventListener('click', (event) => {
-            const target = event.target;
-            
-            // If the target is a search button or input, do nothing
-            if (target.classList.contains('search-btn') || target.classList.contains('search-input')) {
-                return;
-            }
-    
-            // Handle highlighting logic
-            this.toggleHighlight(target);
-    
-            // Handle specific actions based on element type
-            this.handleElementClick(target, handler);
-            
-            // Handle copying logic (buttons with copy-btn class)
-            this.handleCopyAction(target);
-        });
-    }
-    
-    toggleHighlight(target) {
-        const highlight = target.querySelector(".highlight");
-        if (highlight) {
-            highlight.classList.remove('highlight');
-        }
-    
-        // If it's a span with the 'tree-non-collapse' class, prevent default action
-        if (target.tagName === 'SPAN' && target.classList.contains('tree-non-collapse')) {
-            event.preventDefault();
-        }
-    }
-    
-    handleElementClick(target, handler) {
-        // If it's a tree element (key/value)
-        if (
-            target.classList.contains('tree-key') ||
-            target.classList.contains('tree-value') ||
-            target.classList.contains('tree-non-collapse') ||
-            target.classList.contains('line-tree-key') ||
-            target.classList.contains('line-tree-value')
-        ) {
-            const path = target.getAttribute('data-path');
-            this.setCopyText(path);  // Set the copy text
-            handler(path);           // Call the handler with the path
-            
-            // Add highlight after setting copy text
-            const preHighlightedField = this.outputArea.querySelector(".highlight");
-            this.addHighlight(event, 'highlight', preHighlightedField);
-        } else if (target.classList.contains('highlight')) {
-            target.classList.remove('highlight');
-        }
-    }
-    
-    handleCopyAction(target) {
-        // If it's a button with the 'copy-btn' class
-        if (target.tagName === 'BUTTON' && target.classList.contains('copy-btn')) {
-            const keyValue = target.getAttribute('key-value');
-            this.setCopyText(keyValue);  // Set the copy text from the button
-        }
-    
-        // If it's a copy action (either 'copy' or 'copy-btn' class)
-        if (target.classList.contains("copy") || target.classList.contains("copy-btn")) {
-            console.log('bind copy');  // Logging the action (could be removed in production)
-    
-            // Get the text content to be copied
-            const jsonContent = this.getCopyText(); 
-    
-            // Attempt to copy the text to the clipboard
-            navigator.clipboard.writeText(jsonContent)
-                .then(() => {
-                    alert('JSON copied to clipboard!');  // Inform the user about success
-                })
-                .catch(err => {
-                    console.error('Could not copy text: ', err);  // Log the error
-                });
-        }
+        this.outputArea.addEventListener('click', handler);
     }
 }    
 export {View}
