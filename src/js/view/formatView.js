@@ -11,7 +11,6 @@ class FormatView {
        [this.next, this.prev, this.count] = createElement("button", "button", "p");
        this.index = -1;   
        this.searchView = SearchWidget;    
-       console.log(SearchWidget)
     }
 
     setDisplay(data, space) {
@@ -21,6 +20,9 @@ class FormatView {
                 const formattedData = this.jsonConvert(modifiedJson.data, space);
                 this.display.innerHTML = formattedData;
                 this.searchView.view.attachElement({parentElement: this.display});
+                if(this.searchView.model.getSearchText() !== ''){
+                    this.searchView.view.search(this.searchView.model.getSearchText());
+                }
            } else {
                const error = this.handleError(modifiedJson.data);
                this.display.innerHTML = error;

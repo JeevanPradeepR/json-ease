@@ -1,5 +1,7 @@
 @import './body/main-layout.css';
 
+@import './body/popup.css';
+
 @import './views/validate-view.css';
 @import './views/format-view.css';
 @import './views/table-view.css';

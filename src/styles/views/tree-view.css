@@ -136,3 +136,34 @@ details > details:not([open]) summary::after {
         color: #555;
     }
 }
+
+
+.tree-view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: fit-content;
+    position: absolute;
+    top:10px;
+    right: 10px;
+  }
+  
+  .tree-view button {
+    padding: 5px 10px;
+    font-size: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #03A9F4;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .tree-view button:hover {
+    background-color: #039BE5;
+  }
+  

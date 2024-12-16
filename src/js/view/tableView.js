@@ -12,8 +12,7 @@ class TableView {
     }
 
     initTable() {
-       return `
-       <table class='table-format'>
+       return `<table class='table-format'>
             <thead>
                 <tr>
                     <th>Field</th>
@@ -25,11 +24,23 @@ class TableView {
             </tbody>
         </table>`
     }
+
+    initLimit() {
+        return `<div class='limit-container'>
+            <button class='limit-btn'>Limit to one object</button>
+            <span class='limit-info'></span>
+                <button class='prev-btn'>Previous</button>
+                <button class='next-btn'>Next</button>
+            </div>`
+    }
     initLimitation(data) {
         const dataSize = data?.length || 0;
-        this.limitBtn.textContent = 'Limit to one object';
-        this.nextBtn.textContent = 'Next';
-        this.prevBtn.textContent = 'Previous';
+        if(!this.limitBtn.textContent){
+            this.limitBtn.textContent = 'Limit to one object';
+            this.nextBtn.textContent = 'Next';
+            this.prevBtn.textContent = 'Previous';
+        }
+
 
         this.limitBtn.addEventListener('click', () => {
             this.display.querySelector(".table-body").innerHTML = '';
@@ -61,7 +72,6 @@ class TableView {
                 this.prevBtn.disabled = false;
             }
             if(dataSize) {
-                console.log(this.objIndex);
                 this.display.querySelector(".table-body").innerHTML = '';
                 this.limitInfo.textContent = `${this.objIndex+1} of ${dataSize} The data is limited to one object `;
                 this.convertToTable(data[this.objIndex]);
@@ -89,15 +99,29 @@ class TableView {
         clearElement(this.display);
         try {
             const parsedData = JSON.parse(data);
-            this.display.innerHTML = this.initTable();
-            this.initLimitation(parsedData);
+            this.display.innerHTML = this.initLimit()  + this.initTable();
+           // this.initLimitation(parsedData);
             this.table = this.display.querySelector(".table-body");
             this.convertToTable(parsedData);
+            this.setTableProperties(parsedData);
         } catch(e) {
             this.display.style.color = 'orange';
             this.display.innerHTML = this.handleError(e);
             console.warn(e);
         }
+    }
+    setTableIndex(index) {
+        this.objIndex = index;
+    }
+    getTableIndex() {
+        return this.objIndex;
+    }
+    setTableProperties(data) {
+        this.tableLength = data.length || 0;
+        this.tableData = data;
+    }
+    getTableLength() {
+        return this.tableLength;
     }
  
     handleError(error) {

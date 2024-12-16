@@ -11,9 +11,12 @@ class Logger {
       }
     }
   }
-  
+  export default Logger;
+  //example:
+  /**
   const logger = new Logger();
   logger.log('This is an info message');
   logger.log('This is a debug message', 'debug');
-  logger.log('This is an error message', 'error');
+  logger.log('This is an error message', 'error'); 
+  **/
   

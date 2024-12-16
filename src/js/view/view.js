@@ -27,6 +27,7 @@ class View {
         this.tabSpaceBtn = document.querySelector(".tab-space-btn");
         this.path = document.querySelector('.path');
         this.downloadBtn = document.querySelector(".download-btn");
+        this.popupModal = document.getElementById('popupModal');
         this.copyText='';
         this.space = 2;
         this.validateView = new ValidateView(this.outputArea);
@@ -50,8 +51,41 @@ class View {
     getHighlightedElement() {
         return this.outputArea.querySelector(".highlight");
     }
+    getPopupModal() {
+        return this.popupModal;
+    }
+    getNextTableBtn() {
+        return this.outputArea.querySelector(".next-btn");
+    }
+    getPrevTableBtn() {
+        return this.outputArea.querySelector(".prev-btn");
+    }
+    getLimitTableInfo() {
+        return this.outputArea.querySelector('.limit-info');
+    }
+    getTableLength() {
+        return this.tableView.getTableLength();
+    }
+    getTableData() {
+        return this.tableView.getTableData();
+    }
+    setTableData(data) {
+        this.tableView.display.querySelector(".table-body").innerHTML = '';
+        this.tableView.convertToTable(data);
+    }
+    getTableIndex() {
+        return this.tableView.getTableIndex() || 0;
+    }
+    setTableIndex(index) {
+        this.tableView.setTableIndex(index);
+    }
+    getTreeElements() {
+        return this.outputArea.querySelectorAll('details');
+    }
     setDisplay(data, option) {
         this.path.classList.add('path-none');
+        this.outputArea.scrollTo({ top: 0, behavior: 'smooth' });
+
         if(option === 'validate') {
             this.validateView.setDisplay(data);
             this.setCopyText(this.validateView.getCopyData());
@@ -80,6 +114,12 @@ class View {
     }
     setRootPath(path) {
         this.path.textContent = path;
+    }
+    getRootPath() {
+        return this.path.textContent;
+    }
+    bindCopy(handler) {
+        this.path.addEventListener('click', handler);
     }
     bindTransform(handler) {
         this.convertBtn.addEventListener('click', handler);

@@ -15,7 +15,6 @@ class DownloadView {
                 this.downloadExcel(parsedData);
             }
         } catch(e) {
-           // clearElement(this.display);
             this.display.style.color = 'orange';
             this.display.innerHTML = this.handleError(e);
             console.warn(e);

@@ -39,7 +39,6 @@ class SearchController {
             const highlightedElement = this.view.getHighlightedElements();
             this.view.removePreviousHighlights(highlightedElement);
         } else {
-            console.log('Search initiated with:', input);
             this.handleSearch();
         }
     }
@@ -83,7 +82,6 @@ class SearchController {
 }
 class SearchView {
     constructor() {
-        console.log('search view')
         this.searchContainer = this.setSearchContainer();
         this.input = this.searchContainer.querySelector('.search-input');
         this.searchBtn = this.searchContainer.querySelector('.search-btn');
@@ -155,35 +153,28 @@ class SearchView {
             this.count.textContent = '0 matches';
             return;
         }
-    
+        let matchCount = 0;
         this.removePreviousHighlights(this.getHighlightedElements());
-    
-    const elements = this.content.children
-    let matchCount = 0;
+    const elements1 = this.content.querySelectorAll('*');
+    elements1.forEach(element => {
+        if(element.textContent.includes(value)) {
+            element.childNodes.forEach(childNode => {
+                if(childNode.textContent.includes(value) && childNode.nodeType === Node.TEXT_NODE) {
+                    //    Replace the matched text with a highlighted version
+                    const highlightedText = element.innerText.replace(value, `<span class="highlighted" style="background-color: yellow;">${value}</span>`);
+                    // Push element into results if it contains the search value
+                    matchCount++;
 
-    for (let i = 0; i < elements.length; i++) {
-        const element = elements[i];
-        // Process each element
-        if (element.innerHTML.includes(value)) {
-            // Push element into results if it contains the search value
-            matchCount++;
-            // Highlight the matched text by replacing it with a new span
-            const highlightedText = element.innerHTML.replace(/(<[^>]+>)([^<]*)(<\/[^>]+>)/g, (match, openingTag, textContent, closingTag) => {
-                if (textContent.includes(value)) {
-                    // Replace only the matched text with the highlighted version
-                    textContent = textContent.replace(new RegExp(value, 'g'), `<span class="highlighted" style="background-color: yellow;">${value}</span>`);
+                // Update the element's innerHTML with the highlighted version
+                    element.innerHTML = highlightedText;
+                    const highlightedElement = this.content.querySelector('.highlighted');
+                    if (highlightedElement) {
+                        highlightedElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
                 }
-                // Return the HTML tag structure with modified text content
-                return `${openingTag}${textContent}${closingTag}`;
-            });            // Update the element's innerHTML with the highlighted version
-            element.innerHTML = highlightedText;
-            const highlightedElement = this.content.querySelector('.highlighted');
-            if (highlightedElement) {
-                highlightedElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+            })
         }
-    }
-
+    })
 
     
         if (matchCount) {

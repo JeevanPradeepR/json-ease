@@ -8,6 +8,7 @@ class Controller extends BindController {
         this.view.bindTransform(this.transformJson.bind(this));
         this.view.bindSpace(this.manageSpace.bind(this));
         this.view.bindDownload(this.downloadData.bind(this));
+        this.view.bindCopy(this.handleCopy.bind(this));
 
         this.view.bindEvents(this.setEvents.bind(this));
     }
@@ -37,10 +38,15 @@ class Controller extends BindController {
     setEvents(event) {
         const { target } = event;
         this.handleHighlight();
-        this.handleTreeEvents(target);
+        this.handleTreeEvents(event, target);
         this.handleCopyAction(target);
         this.handleButtonActions(event, target);
-        this.handleSearch(event, target);
+        this.handleTableActions(event, target);
+        this.handleExpandAction(event, target);
+    }
+    handleCopy(event) {
+        const { target } = event;
+        this.handleCopyAction(target);
     }
     
 }

@@ -98,6 +98,16 @@
     /* Ensure the text aligns to the left */       
     text-align: left;      
 }
+.path:hover {
+    color: #6495ED;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.path:hover::after {
+    content: "   ⎘: copy";
+    font-size: 14px;
+    color: #333;
+}
 /** For other formats except table, path won't be displayed **/
 .path-none {
     display: none;

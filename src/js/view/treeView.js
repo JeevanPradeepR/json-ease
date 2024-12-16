@@ -8,7 +8,13 @@ class TreeView {
        this.space = 2;
        this.searchView = SearchWidget;
     }
-
+    setViews() {
+        return `<div class="tree-view">
+                    <button class='expand-all'>Expand</button>
+                    <button class='collapse-all'>Collapse</button>
+                    <button class='copy-btn'>Copy</button>    
+        </div>`
+    }
     setDisplay(data, space) {
         clearElement(this.display);
         try {
@@ -17,7 +23,8 @@ class TreeView {
             parentElement.classList.add("details");
             parentElement.classList.add("search-widget-container");
             this.convertToTree(parsedData, parentElement);
-            appendChild(this.display, parentElement)
+            this.display.innerHTML  = this.setViews();
+            appendChild(this.display, parentElement);
             this.space = space;
             const classesToRemove = ['space-value-2', 'space-value-4', 'space-value-8'];
             if (classesToRemove.some(cls => parentElement.classList.contains(cls))) {
@@ -25,7 +32,10 @@ class TreeView {
             }
             parentElement.classList.add(`space-value-${this.space}`)
             this.searchView.view.attachElement({parentElement: this.display});
-            utils.copyToClipBoard(this.display, createElement("div")[0]);
+            if(this.searchView.model.getSearchText() !== ''){
+                this.searchView.view.search(this.searchView.model.getSearchText());
+            }
+
         } catch(e) {
             this.display.innerHTML = this.handleError(e);
             console.warn(e)
@@ -64,7 +74,7 @@ class TreeView {
             appendChild(summary, summaryText)
             // If there's no content (empty object or array), we just append the summary
             const newKey = prefix ? `${prefix}.${key}` : key;
-           // console.log(typeof key, typeof value, key, value)
+
             summaryText.setAttribute("data-path", newKey);
             content.setAttribute("data-path", newKey);
             
