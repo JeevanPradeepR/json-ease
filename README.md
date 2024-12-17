@@ -14,18 +14,18 @@ __Table of Contents__
 9. License
 10. Contact
 
-## Introduction  
+## 1. Introduction  
 JSON Ease is a powerful tool designed to simplify JSON formatting and visualization. Whether you’re a developer or a data enthusiast, JSON Ease helps you transform raw JSON data into a more readable and manageable format.
 
-## Features
-i) __Beautify View__: Color-coded keys and values with proper indentation.  
-ii) __Tree View__: Hierarchical representation of JSON data.  
-iii) __Table View__: Tabular format for easy data analysis.  
-iv) __Single Line View__: Compact representation of JSON data.  
-v) __Custom Indentation__: Choose from 2, 4, or 8 spaces for indentation.  
-vi) __Copy, Download, and Search__: Easily manage your JSON data.  
+## 2. Features
+__i) Beautify View__: Color-coded keys and values with proper indentation.  
+__ii) Tree View__: Hierarchical representation of JSON data.  
+__iii) Table View__: Tabular format for easy data analysis.  
+__iv) Single Line View__: Compact representation of JSON data.  
+__v) Custom Indentation__: Choose from 2, 4, or 8 spaces for indentation.  
+__vi) Copy, Download, and Search__: Easily manage your JSON data.  
 
-## Installation
+## 3. Installation
 __To install JSON Ease, follow these steps__ ⬇️
 
 i) Clone the repository:
@@ -40,7 +40,7 @@ iii) Install the dependencies:
 ```js
 npm install
 ```
-## Usage  
+## 4. Usage  
 __To start using JSON Ease, follow these steps__ ⤵️
 
 i) Run the application:
@@ -54,12 +54,19 @@ http://localhost:3000.
 iii) Input your JSON data and choose your preferred view (__Beautify, Tree, Table, Single Line__).  
 iv) Customize the indentation and use features like copy, download, and search as needed.
 
-## Screenshots
-Include some screenshots of your application in action to give users a visual understanding of what to expect.  
+## 5. Screenshots
+__Included some screenshots of our application in action to give users a visual understanding of what to expect.__  
 
-!Beautify View !Tree View !Table View  
+__i) Format or Beautify View__  
+![format-ss](https://github.com/user-attachments/assets/ace6f3c3-c30f-495b-a9c5-8c0c64788749)
+__ii) Tree View__
+![tree-ss](https://github.com/user-attachments/assets/4e235259-6abd-45f4-91b6-e364efd41e84)
+__iii) Table View__
+![table-ss](https://github.com/user-attachments/assets/5b3e7ee2-67e1-45fc-9178-928c1bc10f9e)
+__iv) Line View__
+![line-ss](https://github.com/user-attachments/assets/f14f0214-87d4-46dc-affa-2b8a2c1e355a)
 
-## Contributing
+## 6. Contributing
 __Contributions are welcome! If you’d like to contribute to JSON Ease, please follow these steps__ ↙️
 
 i) Fork the repository.  
@@ -77,7 +84,7 @@ git push origin feature/your-feature-name
 ```
 v) Open a pull request.
 
-## Creating an Issue
+## 7. Creating an Issue
 If you encounter any bugs or have suggestions for new features, please create an issue:  
 
 i) 🏃 Go to the Issues section of the repository.  
@@ -87,7 +94,7 @@ iv) 🔈Describe the issue in detail, including steps to reproduce the problem i
 v) 🐛 Add any relevant labels, such as “_bug_” or “_enhancement_”.  
 vi) 🔖 Submit the issue.  
 
-## Submitting a Pull Request
+## 8. Submitting a Pull Request
 __To submit a pull request (PR):__  
 
 i)🍴 Fork the repository and create your branch from main.  
@@ -103,10 +110,10 @@ vii) 🪦 Provide a clear and descriptive title for the PR.
 viii) 🔈Describe the changes in detail and mention any related issues.  
 ix) 🔖 Submit the pull request.  
 
-## License
+## 9. License
 This project is licensed under the __MIT License__. See the ___LICENSE___ file for more details.
 
-## Contact
+## 10. Contact
 __If you have any questions or feedback, feel free to reach out:__
 
 🏠 GitHub: [JeevanPradeepR](https://github.com/JeevanPradeepR)
