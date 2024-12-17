@@ -28,6 +28,17 @@
 .header>h2>span {
 border-color: black;
 }
+.header > div>div>a {
+    text-decoration: none;
+    color: black;
+}
+.header>div>div>a:hover {
+    color: #6495ED;
+}
+.header>div>div>a:active {
+    cursor:progress ;
+    color: white;
+}
 
 
 /* For small screens */
