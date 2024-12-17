@@ -9,6 +9,7 @@
 @import './views/tree-view.css';
 
 @import './header/header.css';
+@import './header/theme.css';
 @import './io-layout/input-layout.css';
 @import './io-layout/options-layout.css';
 @import './io-layout/output-layout.css';

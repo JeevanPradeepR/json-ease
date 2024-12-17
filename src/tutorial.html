@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tutorial - How to Use Our App</title>
+    <link rel="stylesheet" href="./styles/header/tutorial.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="./about.html" class="logo">About</a>
+            <a href="./index.html" class="back-home">Back to Home</a>
+        </nav>
+    </header>
+    <!-- Sidebar -->
+    <!-- <div class="sidebar">
+        <h2>Tutorial Steps</h2>
+        <button class="sidebar-button" onclick="scrollToSection('step1')">Validate JSON</button>
+        <button class="sidebar-button" onclick="showRecording('step2')">Format JSON</button>
+        <button class="sidebar-button" onclick="scrollToSection('step3')">Tree View</button>
+        <button class="sidebar-button" onclick="scrollToSection('step4')">Table View</button>
+        <button class="sidebar-button" onclick="scrollToSection('step5')">Line View</button>
+    </div> -->
+
+    <section class="hero">
+        <h1>How to Use Our App</h1>
+        <p>Follow this simple guide to get started and make the most out of our app!</p>
+    </section>
+
+    <section class="tutorial-steps">
+        <div class="step" id="step1">
+            <details>
+                <summary>Validate Json</summary>
+                <p>This feature is designed to validate JSON data. It informs you if the JSON is valid or not. If the JSON is valid, you'll see a message in green text stating "Valid JSON." If the JSON is not valid, a message in red text will appear, detailing the exact issue within the provided JSON.</p>
+                <!-- <video src="./assests/views/validate-json.mp4" controls height="400px" width="800px"></video> -->
+            </details>
+        </div>
+        <div class="step" id="step2">
+            <details>
+                <summary>Format / Beautify Json</summary>
+                <p>This feature allows you to beautify JSON with different color codes for strings, numbers, and booleans. Additionally, it includes a search feature with highlighting options. You can also control the indentation with options for 2, 4, or 8 spaces.</p>
+            <p>The key features include:</p>
+            <li><b>Color-Coded Syntax: </b> Makes it easier to read and understand the JSON structure.</li>
+            <li><b>Customizable Indentation: </b>Improve readability by formatting JSON according to your preference..</li>
+            <li><b>Search and Highlight: </b>Highlight search results for easy identification.</li>
+            <p>These features make the Format / Beautify JSON tool incredibly useful for developers and anyone working with JSON data, providing enhanced readability, usability, and interactivity.</p>
+            </details>
+        </div>
+        <div class="step" id="step2">
+            <details>
+                <summary>Tree View</summary>
+                <p>Similar to the Format view, this feature applies color formatting where keys are displayed in red, values in green, and parent objects in black. Additionally, the Tree View includes a highlighted search feature, just like the Format view.</p>
+                <p>The key enhancements include:</p>
+                <li><b>Expand and Collapse: </b>Easily expand and collapse JSON objects using the [+] and [-] symbols next to the keys.</li>
+                <li><b>Clickable Fields: </b>Click on any field to highlight it with a light yellow background.</li>
+                <li><b>Path Display: </b>Above the search feature, the path of the clicked field is displayed. You can hover over it and copy the root path of the node.</li>
+                <p>This interactive view makes it easier to navigate through complex JSON structures and manage the data effectively.</p>
+            </details>
+        </div>
+        <div class="step" id="step2">
+            <details>
+                <summary>Table View</summary>
+                <p>This view displays JSON in a table structure with three columns: 
+                Fields, Values, and Actions. The Fields column lists the root nodes, while the Values column 
+                shows their respective values. The third column provides a copy button to easily copy the exact
+                 root node and its value.</p>
+
+<p>Key Features:</p>
+<li><b>Pagination: </b>  If the JSON contains an array with multiple items, you can paginate through the objects, limiting the display to one object at a time. This makes it easier to navigate and understand the JSON structure.
+</li>
+<li><b>Copy Root Node: </b> To copy the exact root node with its value.</li>
+<p>
+This view enhances the readability and manageability of complex JSON structures by providing clear visual organization and interactive navigation.
+</p>   
+</details>
+        </div>
+        <div class="step" id="step2">   
+            <details>
+                <summary>Line View</summary>
+                <p>This feature converts multiline JSON into a single line, making it easier to copy and use in various applications.</p>
+                <p>Use Cases:</p>
+                <li><b>API Development: </b>When sending JSON payloads in API requests, a single-line format is often preferred.
+                </li>
+                <li><b>Configuration Files: </b>Useful in environments where configuration files need to be concise and easily readable by machines.</li>
+                <li><b>Logging: </b>When logging JSON data, a single-line format ensures that log files remain clean and easy to parse.
+                </li>
+                <li><b>Embedding in Code: </b>Ideal for embedding JSON data within code snippets or scripts where multiline formatting may cause syntax errors or readability issues.
+                </li>
+                <p>This feature enhances the efficiency and flexibility of handling JSON data, making it a valuable tool for developers and technical users alike.</p>
+            </details>
+        </div>
+    </section>
+
+    <section class="faq" id="step5">
+        <h2>Frequently Asked Questions</h2>
+    
+        <div class="faq-tile">
+            <h3>Is the Customizable Indentation or Tab Space option only available for Tree view and Format view?</h3>
+            <p>Yes, the customizable indentation or tab space option is only available for the Tree view and Format view. For other views, indentation is not necessary, so this feature is specifically enabled for these two views.</p>
+        </div>
+    
+        <div class="faq-tile">
+            <h3>What are the format or extension options available for the "Download As" feature?</h3>
+            <p>The "Download As" feature offers three different download options:</p>
+            <ul>
+                <li><strong>.txt:</strong> Downloads the JSON data as plain text.</li>
+                <li><strong>.json:</strong> Downloads the JSON data in its native JSON format.</li>
+                <li><strong>.xls:</strong> Downloads the JSON data in an Excel file, with keys and values in separate columns.</li>
+            </ul>
+        </div>
+        
+        <div class="faq-tile">
+            <h3>How does the Highlight Search feature work in Tree view and Format view?</h3>
+            <p>The Highlight Search feature allows you to search for specific keys or values within the JSON. When a search term matches, the corresponding elements are highlighted, making it easy to locate and identify relevant data.</p>
+        </div>
+        
+        <div class="faq-tile">
+            <h3>Can I copy the path of a specific JSON field in Tree view?</h3>
+            <p>Yes, in the Tree view, you can click on any field to highlight it and see its path displayed above the search feature. You can hover over the path and copy the root path of the node, making it convenient to reference or navigate through the JSON structure.</p>
+        </div>
+    
+        <!-- Additional Questions -->
+        <div class="faq-tile">
+            <h3>Can I edit JSON directly in the Tree view?</h3>
+            <p>Yes, the Tree view allows you to directly edit JSON fields. Simply click on a field to edit its value, and your changes will be reflected in real-time.</p>
+        </div>
+        
+        <div class="faq-tile">
+            <h3>How do I reset the JSON back to its original state?</h3>
+            <p>You can reset the JSON to its original state by clicking the "Reset" button located at the top of the editor. This will revert any changes you have made.</p>
+        </div>
+    </section>
+    
+
+    <section class="cta">
+        <h2>Ready to get started?</h2>
+        <p>Take the first step towards seamless JSON management. Click the button below to start using our app today and transform your JSON experience!</p>
+        <a href="./index.html" class="cta-button">{[]{}:,} JSON Formatter</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 {[]{}:,} JSON Formatter. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth Scroll to Steps
+// Function to scroll to specific tutorial sections
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+function showRecording(sectionId) {
+    const section = document.getElementById(sectionId);
+    section.classList.remove('show-none');
+    section.querySelector("details").scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    })
+    document.querySelectorAll('.step').forEach(element => {
+        if(element.id !== sectionId)  {
+            element.classList.add('show-none');
+        }          
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const detailsElements = document.querySelectorAll('.step>details');
+
+    detailsElements.forEach((detail) => {
+        detail.addEventListener('toggle', function() {
+            if (this.open) {
+                detailsElements.forEach((otherDetail) => {
+                    if (otherDetail !== this) {
+                        otherDetail.open = false;
+                    }
+                });
+            }
+        });
+    });
+});
+
+    </script>
+</body>
+
+</html>

@@ -8,21 +8,9 @@ import DownloadView from "./downloadView.js";
 class View {
     constructor() {
         this.inputArea = document.querySelector('.input-area');
-        this.inputArea.value = `[{"grossary":{
-            "title": "biscuit",
-            "quantity": 1,
-            "type": {"product":"britinnia", "price":20},
-            "offer": ["scale", "sticker"],
-            "discount": false
-        }}, {"grossary":{
-            "title": "biscuit",
-            "quantity": 1,
-            "type": {"product":"britinnia", "price":20},
-            "offer": ["scale", "sticker"],
-            "discount": false
-        }}]`;
-        this.convertBtn = document.querySelector('.convert-btn');
         this.outputArea = document.querySelector('.output-area');
+        this.theme = document.querySelector('.theme');
+        this.convertBtn = document.querySelector('.convert-btn');
         this.copyBtn = document.querySelector(".copy");
         this.tabSpaceBtn = document.querySelector(".tab-space-btn");
         this.path = document.querySelector('.path');
@@ -37,7 +25,6 @@ class View {
         this.tableView = new TableView(this.outputArea);
         this.downloadView = new DownloadView(this.outputArea, this.inputArea);
         this.path.classList.add('path-none');
-
     }
     getInput() {
         return this.inputArea.value;
@@ -129,6 +116,12 @@ class View {
     }
     bindDownload(handler) {
         this.downloadBtn.addEventListener('change', handler);
+    }
+    bindInsertDummyData(handler) {
+        this.inputArea.addEventListener('keydown', handler);
+    }
+    bindToggleTheme(handler) {
+        this.theme.addEventListener('click', handler);
     }
     addHighlight(event, cls, prev) {
             if (prev) {

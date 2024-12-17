@@ -1,0 +1,36 @@
+
+.dark-theme {
+    background-color: #121212;
+    color: black;
+
+}
+
+.dark-theme header {
+    background-color: #1e1e1e;
+}
+
+.dark-theme button {
+    background-color: #bb86fc;
+}
+
+.dark-theme button:hover {
+    background-color: #7a52c8;
+}
+
+.dark-theme {
+    .table-body > tr > td > button {
+        background-color: white;
+    }
+    .header {
+        background-color: #1e1e1e;
+    }
+    .header > div > div {
+        color: #bb86fc;;
+    }
+    .header > div > div > a {
+        color: #bb86fc;;
+    }
+    .header > div > div:hover, .header > div > div > a:hover {
+        color: #7a52c8;
+    }
+}
