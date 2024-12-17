@@ -167,3 +167,15 @@ details > details:not([open]) summary::after {
     background-color: #039BE5;
   }
   
+    /* Responsive styles */
+  
+    @media (max-width: 1405px) {
+        .tree-view {
+          flex-direction: row;
+          top:40px;
+          margin-right: 0px;
+        }
+        .details {
+           margin-top: 30px;
+        }
+      }
