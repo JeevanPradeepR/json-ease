@@ -33,74 +33,12 @@ class TableView {
                 <button class='next-btn'>Next</button>
             </div>`
     }
-    initLimitation(data) {
-        const dataSize = data?.length || 0;
-        if(!this.limitBtn.textContent){
-            this.limitBtn.textContent = 'Limit to one object';
-            this.nextBtn.textContent = 'Next';
-            this.prevBtn.textContent = 'Previous';
-        }
 
-
-        this.limitBtn.addEventListener('click', () => {
-            this.display.querySelector(".table-body").innerHTML = '';
-            if(this.limitBtn.textContent === 'Limit to one object') {
-                this.limitInfo.textContent = `${this.objIndex+1} of ${dataSize} The data is limited to one object `;
-                this.limitInfo.classList.add('key');
-                this.limitBtn.textContent = 'Expand';
-                this.limitContainer.prepend(this.nextBtn, this.prevBtn);
-                if(dataSize) {
-                    this.convertToTable(data[this.objIndex]);
-                } else {
-                    this.nextBtn.remove();
-                    this.prevBtn.remove();
-                    this.limitInfo.textContent = `Single object can't be limited`;
-                    this.convertToTable(data);
-                }
-            } else {
-                this.limitInfo.textContent = '';
-                this.limitBtn.textContent = 'Limit to one object';
-                this.nextBtn.remove();
-                this.prevBtn.remove();
-                this.convertToTable(data);
-            }
-        });
-        this.nextBtn.addEventListener('click', () => {
-            this.objIndex++;
-            if(this.objIndex < dataSize) {
-                this.nextBtn.disabled = true;
-                this.prevBtn.disabled = false;
-            }
-            if(dataSize) {
-                this.display.querySelector(".table-body").innerHTML = '';
-                this.limitInfo.textContent = `${this.objIndex+1} of ${dataSize} The data is limited to one object `;
-                this.convertToTable(data[this.objIndex]);
-            }
-        })
-        this.prevBtn.addEventListener('click', () => {
-            this.objIndex--;
-            if(this.objIndex >=0) {
-                this.prevBtn.disabled = true;
-                this.nextBtn.disabled = false;
-            }
-            if(dataSize && this.objIndex >= 0) {
-                this.display.querySelector(".table-body").innerHTML = '';
-                this.limitInfo.textContent = `${this.objIndex+1} of ${dataSize} The data is limited to one object `;
-                this.convertToTable(data[this.objIndex]);
-            }
-        })
-        this.limitContainer.append(this.limitInfo, this.limitBtn);
-        this.limitContainer.classList.add('limit-container');
-        this.display.prepend(this.limitContainer);
-
-      
-    }
     setDisplay(data) {
         clearElement(this.display);
         try {
             const parsedData = JSON.parse(data);
             this.display.innerHTML = this.initLimit()  + this.initTable();
-           // this.initLimitation(parsedData);
             this.table = this.display.querySelector(".table-body");
             this.convertToTable(parsedData);
             this.setTableProperties(parsedData);
