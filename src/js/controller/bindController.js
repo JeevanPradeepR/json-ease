@@ -45,7 +45,6 @@ class BindController {
             }
             if(target.classList.contains('prev-btn')) {
                 const index = this.view.getTableIndex();
-                const length = this.view.getTableLength();
                 if(index > 0) {
                     this.view.setTableIndex(index - 1);
                     this.view.setTableData(JSON.parse(this.model.getJson())[index - 1]);
@@ -99,16 +98,17 @@ class BindController {
         const popupModal = this.view.getPopupModal();
         popupModal.style.display = 'block';
         popupModal.textContent = text;
-        // After 3 seconds, fade out and hide the modal
+
+        // After 1.5 seconds, fade out and hide the modal
         setTimeout(() => {
             popupModal.classList.add('fade-out'); // Add fade-out class
         }, 1000); // Delay fade-out for 1 second
     
-        // Hide the modal completely after the animation (3 seconds total)
+        // Hide the modal completely after the animation (1.5 seconds total)
         setTimeout(() => {
             popupModal.style.display = 'none';
             popupModal.classList.remove('fade-out'); // Remove fade-out class
-        }, 3000); // After 3 seconds (match the fade-out time)
+        }, 1500); // After 1.5 seconds (match the fade-out time)
     }
     
     handleButtonActions(event, target) {

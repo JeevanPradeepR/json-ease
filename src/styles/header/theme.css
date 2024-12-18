@@ -6,7 +6,7 @@
 }
 
 .dark-theme header {
-    background-color: #1e1e1e;
+    background-color: #bb86fc;
 }
 
 .dark-theme button {
@@ -24,13 +24,30 @@
     .header {
         background-color: #1e1e1e;
     }
-    .header > div > div {
-        color: #bb86fc;;
-    }
-    .header > div > div > a {
+    .header > div > div, .header > div > div > a {
         color: #bb86fc;;
     }
     .header > div > div:hover, .header > div > div > a:hover {
+        color: #7a52c8;
+    }
+    .input-section button, .option-section button, .output-section button{
+        background-color: #bb86fc;
+        color: white;
+    }
+    .input-section button:hover, .option-section button:hover, .output-section button:hover{
+        background-color: #7a52c8;
+        color: white;
+    }
+    .option-section>.buttons > button:hover, .option-section>.buttons > select:hover {
+        color: #7a52c8;
+    }
+    .option-section>.buttons > select > option {
+        color: #7a52c8;
+    }
+    .option-section>.buttons > button:disabled {
+        color: #121212;
+    }
+    .limit-container > .limit-info {
         color: #7a52c8;
     }
 }

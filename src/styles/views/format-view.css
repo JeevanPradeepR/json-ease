@@ -29,7 +29,6 @@
   
   .search-input {
     width: fit-content;
-    font-size: 16px;
     border: none;
     border-radius: 5px 0 0 5px;
     outline-color: #1e90ff;
@@ -40,7 +39,6 @@
   .search-btn {
     padding: 5px;
     width: fit-content;
-    font-size: 16px;
     border: none;
     border-radius: 0 5px 5px 0;
     background-color: #6495ED;

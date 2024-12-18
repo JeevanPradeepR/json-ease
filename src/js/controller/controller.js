@@ -17,6 +17,10 @@ class Controller extends BindController {
 
     transformJson({target}) {
         const inputText = this.view.getInput();
+        if(!inputText.trim()){
+            this.handlePopup("Please fill the JSON data in the text area")
+            return;
+        }
         this.model.setJson(inputText);
         if(target.tagName === 'BUTTON') {
             this.model.setOption(target.value);
